@@ -6,7 +6,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install pdo  
 WORKDIR /app
 COPY . /app
+RUN composer require laravel/ui:3.x
 RUN composer update
 RUN composer install
+RUN php artisan ui:auth
 CMD php artisan serve --host=0.0.0.0 --port=8000
 EXPOSE 8000
