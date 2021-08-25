@@ -26,3 +26,5 @@
 
 
     Contact: http://bit.ly/PuskarTritalContact
+
+* Note: Use it on your own risk!!!
