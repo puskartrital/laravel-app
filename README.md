@@ -15,8 +15,6 @@
     2. clone repo inside your directory and within that directory open terminal and run 3&4 step.
     3. docker-compose up -d
     4. enjoy :)
-
-    phpmyadmin: http://localhost:1001 username:root password: mysqlrootpassword   ////if you want to change the port change it in docker-compose.yml make sure specified port is available.
     
     laravel: http://localhost:8000 //if you want to change the port change it in docker-compose.yml make sure specified port is available.
 
