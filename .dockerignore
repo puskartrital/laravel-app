@@ -2,3 +2,6 @@ Dockerfile
 .dockerignore
 mysql_data 
 vendor
+docker-compose.yml
+.env*
+web/.env*
