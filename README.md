@@ -13,7 +13,7 @@
     Running this app:
     1. docker, docker-compose must be installed on the system.
     2. clone repo inside your directory and within that directory open terminal and run 3&4 step.
-    3. make sure to edit .env and set app debug to true
+    3. make sure to edit .env and set app debug to true and also change the dbhost to mysql-db
     4. docker-compose up
     5. ctrl+c
     6. if user donot exists and group already create it first
