@@ -13,15 +13,19 @@
     Running this app:
     1. docker, docker-compose must be installed on the system.
     2. clone repo inside your directory and within that directory open terminal and run 3&4 step.
-    3. docker-compose up
-    4. ctrl+c
-    5. if user donot exists and group already create it first
-    6. groupadd -r www-data && useradd -g www-data www-data    
-    7. sudo chown -R www-data:www-data web/
-    8. docker-compose up -d
-    9. now whenever you need to change you can edit inside web/ it will be updated live!
-    10. enjoy :)
+    3. make sure to edit .env and set app debug to true
+    4. docker-compose up
+    5. ctrl+c
+    6. if user donot exists and group already create it first
+    7. groupadd -r www-data && useradd -g www-data www-data    
+    8. sudo chown -R www-data:www-data web/    
+    9. docker-compose up -d
+    10. now whenever you need to change you can edit inside web/ it will be updated live!
+    11. enjoy :)
 
+    if faced issue with connection refused refresh run migrations and try
+
+    for dev purpose only not recommended for production
     
     laravel: http://localhost:8000 //if you want to change the port change it in docker-compose.yml make sure specified port is available.
 

@@ -1,5 +1,6 @@
-FROM php:8.0-apache
+FROM php:7.4-apache
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LOG_CHANNEL=stderr
 LABEL maintainer="pt@puskartrital.com"
 RUN apt-get update && apt-get install -y \    
     vim \
@@ -9,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*    
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 RUN rm -rf /var/www/html
 RUN a2enmod rewrite
 RUN echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
@@ -18,7 +20,7 @@ ADD  --chown=www-data:www-data ./web  /var/www/html
 WORKDIR /var/www/html
 RUN composer require laravel/ui:3.x
 RUN composer update
-RUN composer install
+RUN composer install --no-dev
 RUN composer dump-autoload
 RUN php artisan optimize:clear
 RUN php artisan ui:auth
