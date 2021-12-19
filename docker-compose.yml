@@ -1,4 +1,4 @@
-  version: '3'
+  version: '3.5'
   services:
     mysql-db:
       image: mysql:8.0
@@ -21,8 +21,16 @@
       volumes: ['./web:/var/www/html']
       depends_on:
         - mysql-db
+        - redis
       networks:
         - laravel
+           
+    redis:
+      image: redis
+      ports:
+        - 6379:6379
+      networks:
+        - laravel           
            
   networks:
     laravel:

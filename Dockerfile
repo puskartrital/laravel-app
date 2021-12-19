@@ -18,11 +18,11 @@ RUN echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 RUN  sed -i 's/html/\/html\/public/g' /etc/apache2/sites-enabled/000-default.conf
 ADD  --chown=www-data:www-data ./web  /var/www/html
 WORKDIR /var/www/html
+RUN composer require predis/predis
 RUN composer require laravel/ui:3.x
 RUN composer update
 RUN composer install --no-dev
 RUN composer dump-autoload
-RUN php artisan optimize:clear
 RUN php artisan ui:auth
 EXPOSE 80
 USER www-data
