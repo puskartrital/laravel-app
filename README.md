@@ -13,14 +13,11 @@
     Running this app:
     1. docker, docker-compose must be installed on the system.
     2. clone repo inside your directory and within that directory open terminal and run 3&4 step.
-    3. make sure to edit .env and set app debug to true and also change the dbhost to mysql-db //optional by default no need
-    4. if user donot exists and group already create it first
-    5. groupadd -r www-data && useradd -g www-data www-data        
-    6. sudo chown -R www-data:www-data web/    
-    7. docker-compose up -d     
-    8. if still connection refuse refresh atleat 5 times! till you see run migrations
-    9. now whenever you need to change you can edit inside web/ it will be updated live!
-    10. enjoy :)
+    3. adjust your passwords inside .env accordingly 
+    4. docker-compose up -d     
+    5. if still connection refuse refresh atleat 5 times! till you see run migrations
+    6. now whenever you need to change you can edit inside web/ it will be updated live!
+    7. enjoy :)
 
     if faced issue with connection refused refresh run migrations and try
 

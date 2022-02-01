@@ -6,10 +6,10 @@
       container_name: mysql-db
       restart: unless-stopped      
       environment:
-        - MYSQL_ROOT_PASSWORD=mysqlrootpassword
-        - MYSQL_DATABASE=laravel
-        - MYSQL_USER=laravel
-        - MYSQL_PASSWORD=mysqlpassword
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       networks:
          - laravel
 
@@ -17,8 +17,8 @@
       build:
         context: .
       ports:
-        - 8000:80
-      volumes: ['./web:/var/www/html']
+        - 8000:8000
+      volumes: ['./web:/app']
       depends_on:
         - mysql-db
         - redis

@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:7.4-fpm
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LOG_CHANNEL=stderr
 LABEL maintainer="pt@puskartrital.com"
@@ -12,17 +12,13 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 RUN rm -rf /var/www/html
-RUN a2enmod rewrite
-RUN echo "ServerTokens Prod" >> /etc/apache2/apache2.conf
-RUN echo "ServerSignature Off" >> /etc/apache2/apache2.conf
-RUN  sed -i 's/html/\/html\/public/g' /etc/apache2/sites-enabled/000-default.conf
-ADD  --chown=www-data:www-data ./web  /var/www/html
-WORKDIR /var/www/html
+WORKDIR /app
+COPY ./web  /app
 RUN composer require predis/predis
 RUN composer require laravel/ui:3.x
 RUN composer update
 RUN composer install --no-dev
 RUN composer dump-autoload
 RUN php artisan ui:auth
-EXPOSE 80
-USER www-data
+CMD php artisan serve --host=0.0.0.0 --port=8000
+EXPOSE 8000
