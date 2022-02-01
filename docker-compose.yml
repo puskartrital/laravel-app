@@ -1,10 +1,10 @@
   version: '3.5'
   services:
     mysql-db:
-      image: mysql:8.0
-      command: --default-authentication-plugin=mysql_native_password
+      image: mysql:5.7
+      # command: --default-authentication-plugin=mysql_native_password      
       container_name: mysql-db
-      restart: unless-stopped      
+      restart: unless-stopped            
       environment:
         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -35,4 +35,4 @@
   networks:
     laravel:
   volumes:    
-    web:
+    web:    
